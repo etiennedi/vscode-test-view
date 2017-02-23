@@ -18,7 +18,14 @@
         "commands": [{
             "command": "testView.launch",
             "title": "Switch between Code file and Test file."
-        }]
+        }],
+        "keybindings":[
+            {
+                "command": "testView.launch",
+                "key": "ctrl+shift+.",
+                "mac": "cmd+shift+."
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "tsc -p ./",

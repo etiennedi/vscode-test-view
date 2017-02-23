@@ -1,17 +1,23 @@
 import * as path from 'path';
-import { isTestFile } from './fileType';
+import { isTestFile, stripTestExtension } from './fileType';
+
+const config = {
+    appendTestExtension: '.spec',
+}
 
 export type ParsedFileName = {
-    original : string,
+    fullFileName: string,
+    previous: string | null,
     basename: string,
     basenameWithoutExtension: string,
     extension: string,
     dirname: string
 }
 
-export function parseFileName(fileName : string) : ParsedFileName {
+export function parseFileName(fileName: string): ParsedFileName {
     return {
-        original: fileName,
+        fullFileName: fileName,
+        previous: null,
         basename: path.basename(fileName),
         basenameWithoutExtension: path.basename(fileName, path.extname(fileName)),
         extension: path.extname(fileName),
@@ -19,17 +25,29 @@ export function parseFileName(fileName : string) : ParsedFileName {
     };
 };
 
-// export function switchFileName(oldFileName: ParsedFileName) : ParsedFileName {
-//     const testFile = isTestFile(oldFileName);
+export function switchFileName(oldFileName: ParsedFileName): ParsedFileName {
+    const testFile = isTestFile(oldFileName);
 
-//     const original  = oldFileName.original
-//     const basename = testFile ? oldFileName.basename + k
+    // Unchanged
+    const previous = oldFileName.fullFileName;
+    const dirname = oldFileName.dirname;
+    const extension = oldFileName.extension;
 
-//     return {
-//         original,
-//         basename: path.basename(fileName),
-//         basenameWithoutExtension: path.basename(fileName, path.extname(fileName)),
-//         extension: path.extname(fileName),
-//         dirname: path.dirname(fileName),
-//     };
-// }
+    //Updated
+    const basenameWithoutExtension = testFile ? (
+        stripTestExtension(oldFileName.basenameWithoutExtension)
+    ) : (
+            oldFileName.basenameWithoutExtension + config.appendTestExtension
+        );
+    const basename = basenameWithoutExtension + extension;
+    const fullFileName = path.join(dirname, basename);
+
+    return {
+        fullFileName,
+        previous,
+        basename,
+        basenameWithoutExtension,
+        extension,
+        dirname,
+    };
+}
