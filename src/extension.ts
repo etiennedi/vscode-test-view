@@ -1,10 +1,19 @@
+const config = {
+    appendTestExtension: '.spec',
+}
+
+
 'use strict';
 import * as vscode from 'vscode';
+import { parseFileName } from './fileName';
+import { isTestFile } from './fileType'
 
 export function activate(context: vscode.ExtensionContext) {
 
 
     let disposable = vscode.commands.registerCommand('testView.launch', () => {
+
+try {
 
         // Get the current editor
         const activeEditor = vscode.window.activeTextEditor;
@@ -16,9 +25,14 @@ export function activate(context: vscode.ExtensionContext) {
         }
 
         // Get the current file name
-        const currentFileName = activeEditor.document.fileName;
+        const currentFileName = parseFileName(activeEditor.document.fileName);
+        const targetFileName = switchFileName(currentFileName);
+        
 
-        vscode.window.showInformationMessage(`Current File Name is ${currentFileName}`);
+
+} catch (error) {
+    console.log(error)
+}
 
     });
 
