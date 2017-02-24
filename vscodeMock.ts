@@ -9,4 +9,9 @@ export const context = {
 export const window = {
     activeTextEditor: null,
     showErrorMessage: null,
+    showTextDocument: null,
+}
+
+export const workspace = {
+    openTextDocument: null,
 }
