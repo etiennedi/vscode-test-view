@@ -27,3 +27,5 @@ Feel free to make a pull request to fix one of the Limitations
     - [ ] the extension should create the file
 - opens the new new file in the same place as the old file
     - [ ] optional support for split view would be nice
+- there is no aweseome gif showcasing the extension
+    - [ ] add an awesome gif ;)
