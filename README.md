@@ -19,7 +19,7 @@ You can set your own keybindings like this:
 
 Feel free to make a pull request to fix one of the Limitations
 - not a single test has been written yet
-    - [x] add unit tests
+    - [x] ~~add unit tests~~
     - [ ] add integration tests
 - only matches to `/\.spec$/`
     - [ ] should be made configurable
