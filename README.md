@@ -19,10 +19,11 @@ You can set your own keybindings like this:
 
 Feel free to make a pull request to fix one of the Limitations
 - not a single test has been written yet
-    - quite ironic for a package that helps with writing tests...
+    - [x] add unit tests
+    - [ ] add integration tests
 - only matches to `/\.spec$/`
-    - should be made configurable
+    - [ ] should be made configurable
 - shows an error when file does not exist
-    - should create the file
+    - [ ] the extension should create the file
 - opens the new new file in the same place as the old file
-    - optional support for split view would be nice
+    - [ ] optional support for split view would be nice
