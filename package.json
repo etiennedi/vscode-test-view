@@ -11,19 +11,19 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:testView.launch"
+    "onCommand:extension.testView.switch"
   ],
   "main": "./out/src/extension",
   "contributes": {
     "commands": [
       {
-        "command": "testView.launch",
+        "command": "extension.testView.switch",
         "title": "Switch between Code file and Test file."
       }
     ],
     "keybindings": [
       {
-        "command": "testView.launch",
+        "command": "extension.testView.switch",
         "key": "ctrl+shift+.",
         "mac": "cmd+shift+."
       }
@@ -67,6 +67,13 @@
       "src/**/*.{js,jsx,ts}",
       "!**/node_modules/**",
       "!**/out/**"
-    ]
+    ],
+    "modulePaths": [
+      "src",
+      "node_modules"
+    ],
+    "moduleNameMapper": {
+      "vscode$": "<rootDir>/vscodeMock.ts"
+    }
   }
 }

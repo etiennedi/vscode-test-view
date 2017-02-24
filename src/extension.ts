@@ -6,15 +6,14 @@ import { isTestFile } from './fileType'
 
 export function activate(context: vscode.ExtensionContext) {
 
-    const disposable = vscode.commands.registerCommand('testView.launch', () => {
+    const disposable = vscode.commands.registerCommand('extension.testView.switch', () => {
 
         // Get the current editor
         const activeEditor = vscode.window.activeTextEditor;
 
-        // Abort if there is no editor available 
+        // Abort if there is no editor available
         if (!activeEditor) {
-            vscode.window.showErrorMessage('No file selected. Select either a code file or a test file.');
-            return;
+            return vscode.window.showErrorMessage('No file selected. Select either a code file or a test file.');
         }
 
         // Get the file names
@@ -22,7 +21,7 @@ export function activate(context: vscode.ExtensionContext) {
         const targetFileName = switchFileName(currentFileName);
 
         // Open target file
-        vscode.workspace.openTextDocument(targetFileName.fullFileName).then(
+        return vscode.workspace.openTextDocument(targetFileName.fullFileName).then(
             document => vscode.window.showTextDocument(document),
             () => vscode.window.showErrorMessage(`Target file ${targetFileName.basename} does not seem to exist.`)
         )
