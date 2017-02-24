@@ -45,7 +45,8 @@
     "mocha": "^2.3.3",
     "ts-jest": "^19.0.0",
     "typescript": "^2.0.3",
-    "vscode": "^1.0.0"
+    "vscode": "^1.0.0",
+    "@types/jest": "^18.1.1"
   },
   "jest": {
     "transform": {
@@ -62,7 +63,10 @@
       "/out/"
     ],
     "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
-    "collectCoverageFrom": ["src/**/*.{js,jsx,ts}", "!**/node_modules/**", "!**/out/**"]
-
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts}",
+      "!**/node_modules/**",
+      "!**/out/**"
+    ]
   }
 }

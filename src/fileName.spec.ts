@@ -11,6 +11,7 @@ describe('fileName', () => {
                     dirname: '/some/location',
                     extension: '.js',
                 })
+
         })
     });
 });
