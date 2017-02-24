@@ -27,6 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
             () => vscode.window.showErrorMessage(`Target file ${targetFileName.basename} does not seem to exist.`)
         );
 
+
     });
 
     context.subscriptions.push(disposable);

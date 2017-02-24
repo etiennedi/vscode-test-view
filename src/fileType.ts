@@ -6,6 +6,6 @@ export function isTestFile(file : ParsedFileName) : boolean {
    return !! file.basenameWithoutExtension.match(pattern);
 }
 
-export function stripTestExtension(basename : string) : string {
-    return basename.replace(pattern, '');
+export function stripTestExtension(basenameWithoutExtension : string) : string {
+    return basenameWithoutExtension.replace(pattern, '');
 }
