@@ -1,5 +1,5 @@
-# vscode-test-view
-Helpers to quickly switch between a code file and its test file.
+# Test View (vscode-test-view)
+Quickly switch between a source file and its (unit) test file. Currently assumes both files are within the same directory.
 
 ## How to use
 Press `cmd + shift + .` to switch between a code file and a test file
@@ -17,7 +17,8 @@ You can set your own keybindings like this:
 
 ## Current Limitations / Roadmap
 
-Feel free to make a pull request to fix one of the Limitations
+Feel free to make a pull request to fix one of the limitations. Ideally, open an issue to let me know you're working on it and close the issue with your commit/PR. Thanks :)
+
 - not a single test has been written yet
     - [x] ~~add unit tests~~
     - [ ] add integration tests
