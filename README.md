@@ -9,7 +9,7 @@ You can set your own keybindings like this:
 
 `````javascript
 {
-    "command": "testView.launch",
+    "command": "extension.testView.switch",
     "key": "ctrl+shift+.",
     "mac": "cmd+shift+."
 }
