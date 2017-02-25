@@ -29,3 +29,5 @@ Feel free to make a pull request to fix one of the Limitations
     - [ ] optional support for split view would be nice
 - there is no aweseome gif showcasing the extension
     - [ ] add an awesome gif ;)
+- code file and test file must be in the same folder
+    - [ ] not sure yet, probably needs a config for src and test folder and files must then have the same path. Open for ideas.
