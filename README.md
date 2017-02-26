@@ -23,7 +23,7 @@ Feel free to make a pull request to fix one of the limitations. Ideally, open an
     - [x] ~~add unit tests~~
     - [ ] add integration tests
 - only matches to `/\.spec$/`
-    - [ ] should be made configurable - currently being worked on by @etiennedi in issue #1
+    - [ ] should be made configurable - currently being worked on by @etiennedi in [issue #1](i1)
 - shows an error when file does not exist
     - [ ] the extension should create the file
 - opens the new new file in the same place as the old file
@@ -32,3 +32,5 @@ Feel free to make a pull request to fix one of the limitations. Ideally, open an
     - [ ] add an awesome gif ;)
 - code file and test file must be in the same folder
     - [ ] not sure yet, probably needs a config for src and test folder and files must then have the same path. Open for ideas.
+
+[i1]: https://github.com/etiennedi/vscode-test-view/issues/1
