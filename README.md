@@ -22,7 +22,7 @@ Feel free to make a pull request to fix one of the Limitations
     - [x] ~~add unit tests~~
     - [ ] add integration tests
 - only matches to `/\.spec$/`
-    - [ ] should be made configurable
+    - [ ] should be made configurable - currently being worked on by @etiennedi in issue #1
 - shows an error when file does not exist
     - [ ] the extension should create the file
 - opens the new new file in the same place as the old file
