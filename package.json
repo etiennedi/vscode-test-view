@@ -1,79 +1,82 @@
 {
-  "name": "vscode-test-view",
-  "displayName": "vscode-test-view",
-  "description": "",
-  "version": "0.0.1",
-  "publisher": "Etienne",
-  "engines": {
-    "vscode": "^1.5.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:extension.testView.switch"
-  ],
-  "main": "./out/src/extension",
-  "contributes": {
-    "commands": [
-      {
-        "command": "extension.testView.switch",
-        "title": "Switch between Code file and Test file."
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "extension.testView.switch",
-        "key": "ctrl+shift+.",
-        "mac": "cmd+shift+."
-      }
-    ]
-  },
-  "scripts": {
-    "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test:integration": "node ./node_modules/vscode/bin/test",
-    "test": "jest /src/ --coverage",
-    "test:watch": "jest /src/ --watch"
-  },
-  "devDependencies": {
-    "@types/mocha": "^2.2.32",
-    "@types/node": "^6.0.40",
-    "chai": "^3.5.0",
-    "jest": "^19.0.2",
-    "mocha": "^2.3.3",
-    "ts-jest": "^19.0.0",
-    "typescript": "^2.0.3",
-    "vscode": "^1.0.0",
-    "@types/jest": "^18.1.1"
-  },
-  "jest": {
-    "transform": {
-      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    "name": "vscode-test-view",
+    "displayName": "Test View",
+    "description": "Quickly switch between a code file and its test file.",
+    "version": "0.2.1",
+    "publisher": "etiennedi",
+    "engines": {
+        "vscode": "^1.5.0"
     },
-    "testRegex": "\\.spec\\.(ts|tsx|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js"
+    "categories": [
+        "Other"
     ],
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/out/"
+    "activationEvents": [
+        "onCommand:extension.testView.switch"
     ],
-    "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts}",
-      "!**/node_modules/**",
-      "!**/out/**"
-    ],
-    "modulePaths": [
-      "src",
-      "node_modules"
-    ],
-    "moduleNameMapper": {
-      "vscode$": "<rootDir>/vscodeMock.ts"
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.testView.switch",
+                "title": "Switch between Code file and Test file."
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "extension.testView.switch",
+                "key": "ctrl+shift+.",
+                "mac": "cmd+shift+."
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test:integration": "node ./node_modules/vscode/bin/test",
+        "test": "jest /src/ --coverage",
+        "test:watch": "jest /src/ --watch"
+    },
+    "devDependencies": {
+        "@types/jest": "^18.1.1",
+        "@types/node": "^6.0.40",
+        "chai": "^3.5.0",
+        "jest": "^19.0.2",
+        "mocha": "^2.3.3",
+        "ts-jest": "^19.0.0",
+        "typescript": "^2.2.1",
+        "vscode": "^1.0.0"
+    },
+    "jest": {
+        "transform": {
+            ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+        },
+        "testRegex": "\\.spec\\.(ts|tsx|js)$",
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js"
+        ],
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "/out/"
+        ],
+        "testResultsProcessor": "<rootDir>/node_modules/ts-jest/coverageprocessor.js",
+        "collectCoverageFrom": [
+            "src/**/*.{js,jsx,ts}",
+            "!**/node_modules/**",
+            "!**/out/**"
+        ],
+        "modulePaths": [
+            "src",
+            "node_modules"
+        ],
+        "moduleNameMapper": {
+            "vscode$": "<rootDir>/vscodeMock.ts"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/etiennedi/vscode-test-view"
     }
-  }
 }
