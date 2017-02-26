@@ -14,4 +14,7 @@ export const window = {
 
 export const workspace = {
     openTextDocument: null,
+    getConfiguration: jest.fn().mockReturnValue({
+        get: jest.fn().mockReturnValue(['foo', 'bar'])
+    }),
 }

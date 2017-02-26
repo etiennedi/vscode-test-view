@@ -1,3 +1,7 @@
+jest.mock('./config', () => ({
+    'testFileIdentifiers': ['.spec', '.test']
+}));
+
 import { parseFileName, switchFileName } from './fileName'
 describe('fileName', () => {
     describe('parseFileName', () => {
@@ -15,24 +19,24 @@ describe('fileName', () => {
         })
     });
 
-    describe('switchFileName', () => {
+    describe.only('switchFileName', () => {
         it('returns a non-spec file when called with a spec file', () => {
-            expect(
-                switchFileName({
-                    fullFileName: '/some/location/foo.spec.js',
-                    previous: null,
-                    basename: 'foo.spec.js',
-                    basenameWithoutExtension: 'foo.spec',
-                    dirname: '/some/location',
-                    extension: '.js',
-                })
-            ).toEqual({
-                fullFileName: '/some/location/foo.js',
-                previous: '/some/location/foo.spec.js',
-                basename: 'foo.js',
-                basenameWithoutExtension: 'foo',
+            switchFileName({
+                fullFileName: '/some/location/foo.spec.js',
+                basename: 'foo.spec.js',
+                basenameWithoutExtension: 'foo.spec',
                 dirname: '/some/location',
                 extension: '.js',
+            }).then(res => {
+                expect(res)
+                    .toEqual({
+                        fullFileName: '/some/location/foo.js',
+                        basename: 'foo.js',
+                        basenameWithoutExtension: 'foo',
+                        dirname: '/some/location',
+                        extension: '.js',
+                    })
+
             })
         })
 
@@ -40,7 +44,6 @@ describe('fileName', () => {
             expect(
                 switchFileName({
                     fullFileName: '/some/location/foo.js',
-                    previous: null,
                     basename: 'foo.js',
                     basenameWithoutExtension: 'foo',
                     dirname: '/some/location',
@@ -48,7 +51,6 @@ describe('fileName', () => {
                 })
             ).toEqual({
                 fullFileName: '/some/location/foo.spec.js',
-                previous: '/some/location/foo.js',
                 basename: 'foo.spec.js',
                 basenameWithoutExtension: 'foo.spec',
                 dirname: '/some/location',

@@ -1,13 +1,11 @@
 import * as path from 'path';
+import * as vscode from 'vscode';
+const glob = require('glob-promise')
 import { isTestFile, stripTestExtension } from './fileType';
-
-const config = {
-    appendTestExtension: '.spec',
-}
+import { testFileIdentifiers } from './config'
 
 export type ParsedFileName = {
     fullFileName: string,
-    previous: string | null,
     basename: string,
     basenameWithoutExtension: string,
     extension: string,
@@ -17,7 +15,6 @@ export type ParsedFileName = {
 export function parseFileName(fileName: string): ParsedFileName {
     return {
         fullFileName: fileName,
-        previous: null,
         basename: path.basename(fileName),
         basenameWithoutExtension: path.basename(fileName, path.extname(fileName)),
         extension: path.extname(fileName),
@@ -25,29 +22,20 @@ export function parseFileName(fileName: string): ParsedFileName {
     };
 };
 
-export function switchFileName(oldFileName: ParsedFileName): ParsedFileName {
-    const testFile = isTestFile(oldFileName);
-
-    // Unchanged
-    const previous = oldFileName.fullFileName;
+export function switchFileName(oldFileName: ParsedFileName): Thenable<ParsedFileName> {
     const dirname = oldFileName.dirname;
     const extension = oldFileName.extension;
 
-    //Updated
-    const basenameWithoutExtension = testFile ? (
-        stripTestExtension(oldFileName.basenameWithoutExtension)
-    ) : (
-            oldFileName.basenameWithoutExtension + config.appendTestExtension
-        );
-    const basename = basenameWithoutExtension + extension;
-    const fullFileName = path.join(dirname, basename);
+    const globPattern = oldFileName.basenameWithoutExtension + '*@(' + testFileIdentifiers.join('|') + ')*';
 
-    return {
-        fullFileName,
-        previous,
-        basename,
-        basenameWithoutExtension,
-        extension,
-        dirname,
-    };
+    if (!isTestFile(oldFileName)) {
+        return glob(globPattern, { cwd: dirname })
+            .then((res: string[]) => {
+                const fileName = res[0];
+                return parseFileName(path.join(dirname, fileName))
+            })
+    } else {
+        const fileName = stripTestExtension(oldFileName.basenameWithoutExtension) + extension;
+        return Promise.resolve(parseFileName(path.join(dirname, fileName)));
+    }
 }
